@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+
+<app-map (shareCountries)="share($event)"></app-map>
+<!-- <app-map [selectedCountries]="selectedCountries"></app-map> -->
+<!-- <button (click)="logCountries()">Log Current Countries</button> -->
+
+<div class="container">
+  <div class="row">
+    <div class="articles-container" *ngFor="let article of doubleFilteredMatches">
+      <div class="article">
+
+
+        <div class="article-image" *ngIf="article.image != null"> <img src="{{article.image}}" alt=""> </div>
+        <div class="article-image" *ngIf="article.image == null"> <img src="{{newsLogo}}" alt=""> </div>
+
+
+
+        <div class="article-info">
+          <a href="{{article.url}}">
+            <h3> {{ article.title }} </h3> </a>
+          <!-- <div class="article-date"> {{article.date | date: fullDate}}</div> -->
+          <div class="article-description"> {{ article.description }} </div>
+
+        </div>
+
+        <div class="source-wrapper">
+          <div class="article-thumb"> <img src="{{article.thumbnail}}" alt=""> </div>
+          <div class="article-source"> {{ article.source }} </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="logos">
+
+      <div class="logo-wrapper"><img src="{{amChartsLogo}}" alt=""></div>
+      <div class="logo-wrapper"><img src="{{eventRegistryLogo}}" alt=""></div>
+
+
+    </div>
+
+  </div>
+</div>
