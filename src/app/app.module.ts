@@ -10,6 +10,7 @@ import { MapComponent } from './map/map.component';
 import { ResultsComponent } from './results/results.component';
 import { AmChartsModule } from "@amcharts/amcharts3-angular";
 import { NewsApiService } from "./news-api.service";
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -18,7 +19,8 @@ import { NewsApiService } from "./news-api.service";
     AppComponent,
     NavbarComponent,
     MapComponent,
-    ResultsComponent
+    ResultsComponent,
+    AboutComponent
 
   ],
   imports: [
