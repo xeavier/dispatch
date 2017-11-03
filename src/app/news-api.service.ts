@@ -71,8 +71,6 @@ getEventRegistryNewswire(){
     })
 }
 
-
-
 //Guardian
 getEventRegistryGuardian(){
   return this.http.get("http://eventregistry.org/json/article?sourceUri=www.theguardian.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesCount=200&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesIncludeSourceLocation=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
@@ -81,8 +79,6 @@ getEventRegistryGuardian(){
     return res.json().articles.results;
   })
 }
-
-// &articlesCount=200
 
 //CNN
 getEventRegistryCNN(){

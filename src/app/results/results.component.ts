@@ -1225,30 +1225,32 @@ export class ResultsComponent implements OnInit {
       });
     });
 
-    let combinedBing = this.bingWorldJSON.value.concat(this.bingPoliticsJSON.value);
+
+//BING BING BING BING BING
+    // let combinedBing = this.bingWorldJSON.value.concat(this.bingPoliticsJSON.value);
 
 
 
     //SEARCHING BING NEWS DESCRIPTIONS FOR SELECTED COUNTRY KEYWORD, RETURN RESULT
     // let bingArray = _.pick(_.find('description', 'title', 'url'));
-    let bingArray = _.map(combinedBing, 'description');
-    let bingResult = event.map(function(word) {
-      return bingArray.filter(function(article) {
-        // console.log(article);
-        return article.toString().indexOf(word) > -1;
-      });
-    });
+    // let bingArray = _.map(combinedBing, 'description');
+    // let bingResult = event.map(function(word) {
+    //   return bingArray.filter(function(article) {
+    //     // console.log(article);
+    //     return article.toString().indexOf(word) > -1;
+    //   });
+    // });
 
 
     //Bing Api
     // //RETURNS ARTICLES MENTIONING AT LEAST 2 COUNTRIES, USING THEIR SEMANTICALLY EQUIVALENT KEYWORDS
-    const bingMatches = bingArray.filter(
-      article => allArrayValues.every(
-        words => words.find(
-          word => article.toString().includes(word)
-        )
-      )
-    );
+    // const bingMatches = bingArray.filter(
+    //   article => allArrayValues.every(
+    //     words => words.find(
+    //       word => article.toString().includes(word)
+    //     )
+    //   )
+    // );
 
 
     //News Api
@@ -1263,7 +1265,7 @@ export class ResultsComponent implements OnInit {
     );
 
     // Combine Articles of News API and Bing
-    var allNews = newArray.concat(bingArray);
+    // var allNews = newArray.concat(bingArray);
     // var allNews = newArray;
     // console.log('Combined NEWS API and BING titles/descriptions', allNews);
 
@@ -1271,8 +1273,8 @@ export class ResultsComponent implements OnInit {
     // console.log('articles with mentioning at least 2 countries from News API:');
     // console.log(newsApiMatches);
 
-    const combinedMatches = bingMatches.concat(newsApiMatches);
-    // const combinedMatches = newsApiMatches;
+    // const combinedMatches = bingMatches.concat(newsApiMatches);
+    const combinedMatches = newsApiMatches;
     // console.log("Combined Matches from Bing and News Api: ", combinedMatches);
 
 
@@ -1303,17 +1305,17 @@ export class ResultsComponent implements OnInit {
 
 
 
-    for (let article of combinedBing) {
-      for (let match of combinedMatches) {
-        if (article.description == match) {
-          var bingArticleObject = { title: article.name, description: article.description, url: article.url, image: article.image.thumbnail.contentUrl, source: article.provider[0].name, date: article.datePublished };
-          //Push article objects to global array
-          this.bingApiMatches.push(bingArticleObject);
-          // console.log("Article url: ", article.url, "Article description: ", article.description);
-        }
-      }
-
-    }
+    // for (let article of combinedBing) {
+    //   for (let match of combinedMatches) {
+    //     if (article.description == match) {
+    //       var bingArticleObject = { title: article.name, description: article.description, url: article.url, image: article.image.thumbnail.contentUrl, source: article.provider[0].name, date: article.datePublished };
+    //       //Push article objects to global array
+    //       this.bingApiMatches.push(bingArticleObject);
+    //       // console.log("Article url: ", article.url, "Article description: ", article.description);
+    //     }
+    //   }
+    //
+    // }
     // console.log("Seeing if Bing matches are pushing", this.bingApiMatches);
 
 

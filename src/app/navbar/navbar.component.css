@@ -1,0 +1,36 @@
+/*NAV*/
+.navbar-header .navbar-brand{
+  color: rgb(97, 100, 206);
+  font-size: 2.0em;
+}
+
+.navbar {
+  background-color: rgb(71, 71, 88);
+  background-color: #2b2e31;
+  height: 100%;
+  font-family: 'Exo', sans-serif;
+  margin: 0;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  height: 180px;
+  width: 160px;
+  /*background-color: black;
+  color: white;*/
+  position: absolute;
+  margin: auto;
+}
+
+.dropdown button {
+  /*background-color: #4446ce;*/
+  background-color: black;
+  color: rgb(163, 163, 179);
+  border: .5px solid black;
+  float: left;
+  margin-top: 9px;
+}
