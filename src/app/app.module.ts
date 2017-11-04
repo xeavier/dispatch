@@ -11,6 +11,8 @@ import { ResultsComponent } from './results/results.component';
 import { AmChartsModule } from "@amcharts/amcharts3-angular";
 import { NewsApiService } from "./news-api.service";
 import { AboutComponent } from './about/about.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 
 
@@ -20,7 +22,8 @@ import { AboutComponent } from './about/about.component';
     NavbarComponent,
     MapComponent,
     ResultsComponent,
-    AboutComponent
+    AboutComponent,
+    FooterComponent
 
   ],
   imports: [
