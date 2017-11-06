@@ -17,3 +17,10 @@ div img {
   height: 100%;
   width: 100%;
 }
+
+.jumbotron {
+  height: 800px;
+  background-image: url("http://iliketowastemytime.com/sites/default/files/night-sky-hd-wallpaper.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}

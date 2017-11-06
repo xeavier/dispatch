@@ -97,8 +97,14 @@
   max-width: 100%;
 }
 
+#footer {
+   bottom: 0;
+   width: 100%;
+   position: absolute;
+   height: 50px;
+   background-color: #f5f5f5;
+ }
 
-/*.article-info {
-  display: flex;
-  flex-wrap: wrap;
-}*/
+.footer-block {
+   margin: 20px 0;
+}

@@ -1,7 +1,11 @@
+<!-- Load Nav -->
 <app-navbar></app-navbar>
 
+<!-- Load Map -->
 <app-map (shareCountries)="share($event)"></app-map>
 
+
+<!-- Display Article Results -->
 <div class="container">
   <div class="row">
     <div class="articles-container" *ngFor="let article of doubleFilteredMatches">
@@ -42,4 +46,9 @@
   </div>
 </div>
 
-<app-footer></app-footer>
+
+<!-- <div id="footer">
+   <div class="container">
+     <p class="footer-block">Place sticky footer content here.</p>
+   </div>
+</div> -->
