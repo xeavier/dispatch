@@ -1,21 +1,26 @@
 <nav class="navbar navbar-default">
+  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="icon-bar"></span>
+  </button>
   <div class="container-fluid">
 
     <div class="navbar-header">
-      <a class="navbar-brand" routerLink="" routerLinkActive="active">DISPATCH</a>
+      <a class="navbar-brand" href="#">DISPATCH</a>
     </div>
-    <div class="dropdown">
+    <!-- <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Get Started
       </button>
       <div class="dropdown-menu" data-toggle="dropdown" aria-labelledby="dropdownMenuButton">
         <div class="dropdown-item"> Click on the map and search to see the latest news headlines from your selected country.  Choosing two or more countries will provide articles involving events relevant to all selections.  </div>
       </div>
-    </div>
+    </div> -->
 
-    <button class="btn btn-secondary" type="button" name="button" id="about-dispatch">
-      <a routerLink="/about" routerLinkActive="active"> About </a>
-    </button>
+ <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" routerLink="/about" routerLinkActive="active"> About </a>
+      </div>
+</div>
 
 
   </div>

@@ -1166,9 +1166,9 @@ export class ResultsComponent implements OnInit {
 
 
 
-
+//NEWS API
     //Combines NEWS API arrays for easier iteration/mapping
-    var combinedArray = this.bbcJSON.articles.concat(this.alJazeeraJSON.articles, this.apJSON.articles, this.googleJSON.articles, this.economistJSON.articles, this.nytJSON.articles, this.wapoJSON.articles, this.cnnJSON.articles, this.newsweekJSON.articles, this.reutersJSON.articles, this.guardianUkJSON.articles, this.guardianAuJSON.articles, this.huffPostJSON.articles, this.wsjJSON.articles);
+    // var combinedArray = this.bbcJSON.articles.concat(this.alJazeeraJSON.articles, this.apJSON.articles, this.googleJSON.articles, this.economistJSON.articles, this.nytJSON.articles, this.wapoJSON.articles, this.cnnJSON.articles, this.newsweekJSON.articles, this.reutersJSON.articles, this.guardianUkJSON.articles, this.guardianAuJSON.articles, this.huffPostJSON.articles, this.wsjJSON.articles);
     // console.log('Combined news article array', combinedArray);
 
 
@@ -1211,20 +1211,20 @@ export class ResultsComponent implements OnInit {
 
     // console.log("Articles mentioning at least two countries from EventRegistry JSON", eventRegistryMatches);
 
-
+//NEWS API
     //Iterating over the ARTICLE TITLES to see if they have country name from selected countries
-    var newArray = _.map(combinedArray, 'description');
-    console.log("Combined News API descriptions", newArray);
-    let result =  event.map(function(word){
-    	return newArray.filter(function(article){
-        // console.log(article);
-        if (!article) {
-          return false;
-        } else {
-      	return article.toString().indexOf(word) > -1;
-      }
-      });
-    });
+    // var newArray = _.map(combinedArray, 'description');
+    // console.log("Combined News API descriptions", newArray);
+    // let result =  event.map(function(word){
+    // 	return newArray.filter(function(article){
+    //     // console.log(article);
+    //     if (!article) {
+    //       return false;
+    //     } else {
+    //   	return article.toString().indexOf(word) > -1;
+    //   }
+    //   });
+    // });
 
 
 //BING BING BING BING BING
@@ -1254,16 +1254,16 @@ export class ResultsComponent implements OnInit {
     // );
 
 
-    //News Api
-    var newArray = _.map(combinedArray, 'title');
-    // console.log("Combined News API descriptions", newArray);
-    const newsApiMatches = newArray.filter(
-      article => allArrayValues.every(
-        words => words.find(
-          word => article.toString().includes(word)
-        )
-      )
-    );
+//NEWS API
+    // var newArray = _.map(combinedArray, 'title');
+    // // console.log("Combined News API descriptions", newArray);
+    // const newsApiMatches = newArray.filter(
+    //   article => allArrayValues.every(
+    //     words => words.find(
+    //       word => article.toString().includes(word)
+    //     )
+    //   )
+    // );
 
     // Combine Articles of News API and Bing
     // var allNews = newArray.concat(bingArray);
@@ -1275,7 +1275,9 @@ export class ResultsComponent implements OnInit {
     // console.log(newsApiMatches);
 
     // const combinedMatches = bingMatches.concat(newsApiMatches);
-    const combinedMatches = newsApiMatches;
+
+//NEWS API
+    // const combinedMatches = newsApiMatches;
     // console.log("Combined Matches from Bing and News Api: ", combinedMatches);
 
 
@@ -1291,17 +1293,17 @@ export class ResultsComponent implements OnInit {
       }
     }
     // console.log("Seeing if ER articles are pushing", this.eventRegistryMatchesArray);
-
-    for (let article of combinedArray) {
-      for (let match of combinedMatches) {
-        if (article.title == match) {
-          var articleObject = { title: article.title, description: article.description, url: article.url, image: article.urlToImage, date: article.publishedAt };
-          //Push article objects to global array
-          this.newsApiMatches.push(articleObject);
-          console.log("Article url: ", article.url, 'Article title: ', article.title);
-        }
-      }
-    }
+//NEWS API
+    // for (let article of combinedArray) {
+    //   for (let match of combinedMatches) {
+    //     if (article.title == match) {
+    //       var articleObject = { title: article.title, description: article.description, url: article.url, image: article.urlToImage, date: article.publishedAt };
+    //       //Push article objects to global array
+    //       this.newsApiMatches.push(articleObject);
+    //       console.log("Article url: ", article.url, 'Article title: ', article.title);
+    //     }
+    //   }
+    // }
     // console.log("Seeing if articles are pushing", this.newsApiMatches);
 
 
@@ -1322,9 +1324,9 @@ export class ResultsComponent implements OnInit {
 
 
     //COMBINE ALL MATCHED ARTICLES, FROM ALL APIS
-    this.allMatches = this.eventRegistryMatchesArray.concat(this.newsApiMatches);
-    // console.log("NEWS API MATCHES", this.newsApiMatches);
-    // console.log("All matches", this.allMatches);
+    this.allMatches = this.eventRegistryMatchesArray
+    // .concat(this.newsApiMatches);
+
 
     this.filteredMatches = __.uniqBy(this.allMatches, 'description');
     // console.log("Lodash array with zero duplicates", this.filteredMatches);
