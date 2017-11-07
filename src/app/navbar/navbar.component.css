@@ -12,6 +12,12 @@
   margin: 0;
 }
 
+.navbar-nav > a {
+    line-height: 50px;
+    float:none;
+    display: inline-block;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
