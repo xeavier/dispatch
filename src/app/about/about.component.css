@@ -13,6 +13,7 @@
 }
 
 .jumbotron {
+  text-align: center;
   height: 800px;
   color: white;
   background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/rWTERSESipmu22cf/satellite-the-flight-of-the-satellite-over-the-earth-the-tracking-camera-4k-nasa_slzogyv2px_thumbnail-full01.png");
