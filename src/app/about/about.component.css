@@ -14,7 +14,8 @@
 
 .jumbotron {
   height: 800px;
-  background-image: url("http://iliketowastemytime.com/sites/default/files/night-sky-hd-wallpaper.jpg");
+  color: white;
+  background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/rWTERSESipmu22cf/satellite-the-flight-of-the-satellite-over-the-earth-the-tracking-camera-4k-nasa_slzogyv2px_thumbnail-full01.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -24,5 +25,9 @@
   display: inline-block;
   height: 100%;
   width: 30%;
-  background-color: purple;
+  /*background-color: purple;*/
+}
+
+.marketing-box h2 {
+  text-align: center;
 }
