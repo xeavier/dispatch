@@ -4,11 +4,22 @@
 <!-- Load Map -->
 <app-map (shareCountries)="share($event)"></app-map>
 
+<!-- Placeholder Text -->
+<div class="container" id="placeholder-text">
+  <div class="col-xs-2"></div>
+  <div class="col-xs-8">
+    <h1>Nothing here yet</h1>
+  </div>
+  <div class="col-xs-2"></div>
+</div>
 
 <!-- Display Article Results -->
 <div class="container">
   <div class="row">
     <div class="articles-container" *ngFor="let article of doubleFilteredMatches">
+
+
+
       <div class="article">
 
 

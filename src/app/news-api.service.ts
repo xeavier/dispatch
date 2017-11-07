@@ -51,6 +51,15 @@ export class NewsApiService {
    }
 
 
+hideDiv() {
+       var placeholderText = document.getElementById("placeholder-text");
+       if (placeholderText.style.display === "none") {
+           placeholderText.style.display = "block";
+       } else {
+           placeholderText.style.display = "none";
+       }
+   }
+
 //EVENT REGISTRY
 
 //BBC

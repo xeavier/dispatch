@@ -290,6 +290,7 @@ export class ResultsComponent implements OnInit {
 
   share(event) {
 
+    this.newsAPI.hideDiv();
     //Enhanced Search.  If a selected country is in the 'event' array, push words relevant to that country to
     //array that we will compare to API JSON title/description keywords
 
@@ -1597,4 +1598,5 @@ export class ResultsComponent implements OnInit {
 
 
   }
+
 }
