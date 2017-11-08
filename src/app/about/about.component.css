@@ -16,11 +16,19 @@
   text-align: center;
   height: 800px;
   color: white;
-  background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/rWTERSESipmu22cf/satellite-the-flight-of-the-satellite-over-the-earth-the-tracking-camera-4k-nasa_slzogyv2px_thumbnail-full01.png");
+  background-image: url("https://i.imgur.com/723QP.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+@media all and (max-width: 700px) {
+    .jumbotron
+    {
+        height: 600px;
+    }
+}
+
 
 .marketing-box {
   display: inline-block;
