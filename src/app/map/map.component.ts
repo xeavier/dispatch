@@ -22,7 +22,9 @@ export class MapComponent implements OnInit {
 
    //Share selected countries with results.component
   fireShareEvent(event) {
-    this.shareCountries.emit(this.selectedCountries);
+    if (this.selectedCountries.length > 0) {
+      this.shareCountries.emit(this.selectedCountries);
+    } 
   }
 
 
