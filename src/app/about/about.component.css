@@ -7,9 +7,9 @@
   text-align: justify;
 }
 
-.col-xs-8 {
+.col-sm-4 {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .jumbotron {

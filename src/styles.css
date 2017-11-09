@@ -2,3 +2,45 @@
 body {
   font-family: 'Exo', sans-serif;
 }
+
+.col-sm-4 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.logos {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo-wrapper {
+  display: flex;
+  height: 300px;
+  width: 300px;
+  flex-direction: column;
+  text-align: center;
+  /*vertical-align: middle;*/
+  justify-content: space-around;
+}
+
+#newsApiLogo img {
+  display: block;
+  margin: 0 auto;
+  height: 40%;
+  width: 40%;
+}
+
+
+.logo-wrapper span {
+  font-size: 2.0em;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.logo-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+}
