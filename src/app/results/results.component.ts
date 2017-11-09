@@ -222,8 +222,6 @@ export class ResultsComponent implements OnInit {
 
 
 
-
-
   //AFRICA
   private moroccoArray: Array<string> = ["Morocco", "Moroccan", "Morocco's", "Moroccans", "Rabat", "Berber", "Casablanca", "Marrakesh", "Fes", "Tangier", "King Hassan II"];
   private algeriaArray: Array<string> = ["Algeria", "Algerian", "Algeria's", "Algerians", "Oran", "Constantine", "Algiers", "Abdelaziz Bouteflika"];
@@ -286,13 +284,15 @@ export class ResultsComponent implements OnInit {
 
 
 
+//Enhanced Search.  If a selected country is in the 'event' array, push words relevant to that country to
+//array that we will compare to API JSON title/description keywords
 
 
   share(event) {
 
+    //Hides placeholder text when event is triggered
     this.newsAPI.hideDiv();
-    //Enhanced Search.  If a selected country is in the 'event' array, push words relevant to that country to
-    //array that we will compare to API JSON title/description keywords
+    this.newsAPI.showDiv();
 
     //Clear previous matches to update the DOM for latest selection
     this.allMatches.length = 0;
@@ -300,10 +300,12 @@ export class ResultsComponent implements OnInit {
     this.newsApiMatches.length = 0;
 
 
-    let allArrayValues = [];  //Stores the country keywords for later mapping
+    //Stores the country keywords for later mapping
+    let allArrayValues = [];
 
 
     //If the event array contains a country, push the country's keywords to allArrayValues
+
     if (event.includes("United States")) {
       allArrayValues.push(this.americanArray);
       console.log("America!");
@@ -447,8 +449,6 @@ export class ResultsComponent implements OnInit {
       allArrayValues.push(this.ukraineArray);
       console.log("Ukraine");
     }
-
-
 
 
     //ASIA
@@ -1382,7 +1382,7 @@ export class ResultsComponent implements OnInit {
     //     console.log("The Guardian - Event Registry", this.eventRegistryGuardian);
     //   });
     // });
-    //
+
     // Return current news from Event Registry CNN International
     this.newsAPI.getEventRegistryCNN()
       .subscribe((res: Response) => {
@@ -1437,7 +1437,7 @@ export class ResultsComponent implements OnInit {
         });
       });
 
-    // //Return current news from Event Registry Wall Street Journal
+    //Return current news from Event Registry Wall Street Journal
     // this.newsAPI.getEventRegistryWSJ()
     // .subscribe((res: Response) => {
     //   this.ngZone.run(() => {

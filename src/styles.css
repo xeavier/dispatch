@@ -8,20 +8,13 @@ body {
   justify-content: space-around;
 }
 
-.logos {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
+/*API LOGO STYLING*/
 .logo-wrapper {
   display: flex;
   height: 300px;
   width: 300px;
   flex-direction: column;
   text-align: center;
-  /*vertical-align: middle;*/
   justify-content: space-around;
 }
 
@@ -43,4 +36,11 @@ body {
 .logo-wrapper img {
   max-width: 100%;
   max-height: 100%;
+}
+
+
+/*FOOTER*/
+.footer {
+  background-color: #2b2e31;
+  height: 60px;
 }

@@ -16,8 +16,8 @@
 
 <!-- Display Article Results -->
 <div class="container">
-  <div class="row">
-    <div class="articles-container" *ngFor="let article of doubleFilteredMatches">
+  <div class="row" id="articles-container">
+    <div *ngFor="let article of doubleFilteredMatches">
 
 
 
@@ -51,8 +51,6 @@
 
 <div class="row">
 
-<div class="logos">
-
   <div class="col-sm-4">
     <a href="https://www.amcharts.com" target="_blank">
       <div class="logo-wrapper"><img src="{{amChartsLogo}}" alt="amCharts"></div>
@@ -75,13 +73,14 @@
 
   </div>
 
-
-
-
 </div>
+
 </div>
 
 
+<!-- FOOTER -->
+<div class="row">
+  <div class="footer">
 
-
+  </div>
 </div>

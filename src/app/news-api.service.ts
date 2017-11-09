@@ -56,8 +56,12 @@ hideDiv() {
            placeholderText.style.display = "none";
    }
 
-//EVENT REGISTRY
+showDiv() {
+        var articlesContainer = document.getElementById("articles-container");
+            articlesContainer.style.display = "block";
+  }
 
+//EVENT REGISTRY API
 //BBC
 getEventRegistryBBC(){
   return this.http.get("http://eventregistry.org/json/article?sourceUri=bbc.co.uk&sourceUri=bbc.com&categoryUri=dmoz%2FSociety%2FPolitics&action=getArticles&articlesSortBy=date&resultType=articles&articlesCount=200&articlesIncludeArticleDuplicateList=true&articlesIncludeArticleCategories=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
@@ -152,8 +156,7 @@ getEventRegistryWSJ(){
 }
 
 
-
-
+// NEWS API
 getBBC(){
   return this.http.get('https://newsapi.org/v1/articles?source=bbc-news&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
       .map((res) => {
@@ -266,7 +269,7 @@ getWSJ(){
     })
 }
 
-
+// BING API
 getBingWorldNews() {
   let headers = new Headers({ 'Ocp-Apim-Subscription-Key': this.bingToken });
   let options = new RequestOptions({ headers: headers });
@@ -286,10 +289,6 @@ getBingPoliticsNews() {
         return res.json();
       })
 }
-
-
-
-
 
 
 

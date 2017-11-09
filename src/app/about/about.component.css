@@ -7,11 +7,6 @@
   text-align: justify;
 }
 
-.col-sm-4 {
-  display: flex;
-  justify-content: space-around;
-}
-
 .jumbotron {
   text-align: center;
   height: 800px;
