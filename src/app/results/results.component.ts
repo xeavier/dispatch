@@ -16,7 +16,7 @@ import * as $ from 'jquery';
 })
 export class ResultsComponent implements OnInit {
 
-  //IMAGES
+  //API IMAGES + NEWS IMAGE PLACEHOLDER
   private eventRegistryLogo: string = 'https://pbs.twimg.com/profile_images/875698295808679936/b1Pqj1by_400x400.jpg';
   private amChartsLogo: string = 'https://avatars0.githubusercontent.com/u/1116146?s=400&v=4';
   private newsLogo: string = 'https://image.freepik.com/free-icon/news-logo_318-38132.jpg';
@@ -282,9 +282,9 @@ export class ResultsComponent implements OnInit {
 
 
 
-//Enhanced Search.  If a selected country is in the 'event' array, push words relevant to that country to
-//array that we will compare to API JSON title/description keywords
-
+//ENHANCED SEARCH.
+// If a selected country is in the 'event' array, push words relevant to that country to
+// array that we will compare to API JSON title/description keywords.
 
   share(event) {
 
@@ -292,7 +292,7 @@ export class ResultsComponent implements OnInit {
     this.newsAPI.hideDiv();
     this.newsAPI.showDiv();
 
-    //Clear previous matches to update the DOM for latest selection
+    //Clears previous matches to update the DOM for latest selection
     this.allMatches.length = 0;
     this.eventRegistryMatchesArray.length = 0;
     this.newsApiMatches.length = 0;
@@ -302,7 +302,8 @@ export class ResultsComponent implements OnInit {
     let allArrayValues = [];
 
 
-    //If the event array contains a country, push the country's keywords to allArrayValues
+
+//--If the event array contains a country, push the country's equivalent keywords to allArrayValues--
 
     if (event.includes("United States")) {
       allArrayValues.push(this.americanArray);
@@ -1169,19 +1170,28 @@ export class ResultsComponent implements OnInit {
 
 
 
-    //NEWS API
-    //Combines NEWS API arrays for easier iteration/mapping
-    var combinedArray = this.bbcJSON.articles.concat(this.alJazeeraJSON.articles, this.apJSON.articles, this.googleJSON.articles, this.economistJSON.articles, this.nytJSON.articles, this.wapoJSON.articles, this.cnnJSON.articles, this.newsweekJSON.articles, this.reutersJSON.articles, this.guardianUkJSON.articles, this.guardianAuJSON.articles, this.huffPostJSON.articles, this.wsjJSON.articles);
+// -----------------------------------------------------------
+// The code below combines data from our api calls, matches selected countries to the title and/or description keywords, filters the matches for duplicates, and returns matching articles in an array.
 
 
-    //EVENT REGISTRY - COMBINED ARRAYS
+
+    //Combine arrays from NewsApi for easier iteration/mapping
+    var combinedNewsApiArrays = this.bbcJSON.articles.concat(this.alJazeeraJSON.articles, this.apJSON.articles, this.googleJSON.articles, this.economistJSON.articles, this.nytJSON.articles, this.wapoJSON.articles, this.cnnJSON.articles, this.newsweekJSON.articles, this.reutersJSON.articles, this.guardianUkJSON.articles, this.guardianAuJSON.articles, this.huffPostJSON.articles, this.wsjJSON.articles);
+
+
+    //Combine Arrays from Event Registry for easier iteration/mapping
     var combinedEventRegistry = this.eventRegistryBBC.concat(this.eventRegistryGuardian, this.eventRegistryNewswire, this.eventRegistryCNN, this.eventRegistryWAPO, this.eventRegistryReuters, this.eventRegistryNYT, this.eventRegistryEconomist, this.eventRegistryAP, this.eventRegistryWSJ);
-    // console.log("Combined Event Registry Articles Array", combinedEventRegistry);
 
 
-    //SEARCHING EventRegistry NEWS DESCRIPTIONS FOR SELECTED COUNTRY KEYWORD, RETURN RESULT
+
+//-------------------------EVENT REGISTRY----------------------------
+
+// Check EventRegistry TITLES for matching country words selected by user.
+
+    //Combine the EventRegistry titles
     let eventRegistryTitles = _.map(combinedEventRegistry, 'title');
-    // console.log("Seeing if ER title mapping works", eventRegistryTitles);
+
+    //Iterate over the article TITLES to see if they contain a a country selected by user.  Re†urn resul†.
     let eventRegistryResult = event.map(function(word) {
       return eventRegistryTitles.filter(function(article) {
         return article.toString().indexOf(word) > -1;
@@ -1189,17 +1199,14 @@ export class ResultsComponent implements OnInit {
     });
 
 
-
-    //Event Registry Api
-    //RETURNS ARTICLES MENTIONING AT LEAST 2 COUNTRIES, USING THEIR SEMANTICALLY EQUIVALENT KEYWORDS
-
-    //Remove duplicate titles
-    var eventRegistryFiltered = eventRegistryTitles.filter(function(elem, index, self) {
+    //Removes duplicate TITLES
+    var filteredEventRegistryTitles = eventRegistryTitles.filter(function(elem, index, self) {
       return index == self.indexOf(elem);
-    })
+    });
 
 
-    const eventRegistryMatches = eventRegistryFiltered.filter(
+    //Returns articles mentioning at least two countries, using their semantically equivalent keywords (found in allArrayValues).
+    const eventRegistryMatches = filteredEventRegistryTitles.filter(
       article => allArrayValues.every(
         words => words.find(
           word => article.toString().includes(word)
@@ -1208,13 +1215,16 @@ export class ResultsComponent implements OnInit {
     );
 
 
-//NEWS API
-    // Iterating over the ARTICLE TITLES to see if they have country name from selected countries
-    var newArray = _.map(combinedArray, 'description');
-    console.log("Combined News API descriptions", newArray);
-    let result =  event.map(function(word){
+
+//------------------------------NEWS API-----------------------------------
+
+// Check News Api DESCRIPTIONS for matching country words selected by user.
+    //Combine the News Api descriptions
+    var newArray = _.map(combinedNewsApiArrays, 'description');
+
+    //Iterate over the article DESCRIPTIONS to see if they contain a a country selected by user
+    let result = event.map(function(word){
     	return newArray.filter(function(article){
-        // console.log(article);
         if (!article) {
           return false;
         } else {
@@ -1225,11 +1235,11 @@ export class ResultsComponent implements OnInit {
 
 
 
+// Check News Api TITLES for matching country words selected by user.
 
-
-  //Map NewsApi titles to the new array.
-    var newArray = _.map(combinedArray, 'title');
-    // console.log("Combined News API descriptions", newArray);
+    //Combine the News Api titles
+    var newArray = _.map(combinedNewsApiArrays, 'title');
+    //Iterate over the article TITLES to see if they contain a a country selected by user
     const newsApiFilteredArray = newArray.filter(
       article => allArrayValues.every(
         words => words.find(
@@ -1239,16 +1249,15 @@ export class ResultsComponent implements OnInit {
     );
 
 
-//NEWS API
+// ----------Match Selected Countries to Articles That Mention Them---------
 
+//EVENT REGISTRY
     for (let article of combinedEventRegistry) {
       for (let match of eventRegistryMatches) {
         if (article.title == match) {
           var eventRegistryObject = { title: article.title, description: article.body, url: article.url, image: article.image, source: article.source.title, thumbnail: article.source.details.thumbImage, date: article.date };
           //Push article objects to global array
           this.eventRegistryMatchesArray.push(eventRegistryObject);
-
-          // console.log("Article url: ", article.url, 'Article title: ', article.title);
         }
       }
     }
@@ -1256,7 +1265,7 @@ export class ResultsComponent implements OnInit {
 
 
 //NEWS API
-    for (let article of combinedArray) {
+    for (let article of combinedNewsApiArrays) {
       for (let match of newsApiFilteredArray) {
         if (article.title == match) {
           var articleObject = { title: article.title, description: article.description, url: article.url, image: article.urlToImage, date: article.publishedAt };
@@ -1265,18 +1274,18 @@ export class ResultsComponent implements OnInit {
         }
       }
     }
-    console.log("Seeing if articles are pushing", this.newsApiMatches);
+    // console.log("Seeing if articles are pushing", this.newsApiMatches);
 
 
 
 
-    //COMBINE ALL MATCHED ARTICLES, FROM ALL APIS
+//COMBINE ALL MATCHED ARTICLES, FROM ALL APIS
     this.allMatches = this.eventRegistryMatchesArray.concat(this.newsApiMatches);
     console.log("All MATCHES", this.allMatches);
 
-
+//Double filter the matches by description and title to remove any duplicates
     this.filteredMatches = __.uniqBy(this.allMatches, 'description');
-    // console.log("Lodash array with zero duplicates", this.filteredMatches);
+    console.log("Lodash array with zero duplicates", this.filteredMatches);
 
     this.doubleFilteredMatches = __.uniqBy(this.filteredMatches, 'title');
     console.log("Lodash double filtered matches", this.doubleFilteredMatches);
