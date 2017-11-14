@@ -38,8 +38,6 @@ export class ResultsComponent implements OnInit {
   //NEWS API JSONS
   private bbcJSON: any;
   private alJazeeraJSON: any;
-  private bingWorldJSON: any;
-  private bingPoliticsJSON: any;
   private apJSON: any;
   private googleJSON: any;
   private economistJSON: any;
@@ -58,7 +56,6 @@ export class ResultsComponent implements OnInit {
 
   //Matched Article Keys/Properties to display in DOM
   private newsApiMatches: any = [];
-  private bingApiMatches: any = [];
   private eventRegistryMatchesArray: any = [];
   private allMatches: any = [];
   private filteredMatches: any = [];
@@ -126,7 +123,7 @@ export class ResultsComponent implements OnInit {
   private bouvetIslandArray: Array<string> = ["Bouvet Island"];
   private falklandIslandsArray: Array<string> = ["Falkland Islands", "East Falkland", "Falklands"];
   private cookIslandsArray: Array<string> = ["Cook Islands", "Avarua", "Cook Islanders"];
-
+  private bhutanArray: Array<string> = ["Bhutan", "Bhutanese", "Bhutan's", "Thimphu"];
 
 
 
@@ -149,6 +146,7 @@ export class ResultsComponent implements OnInit {
   private indiaArray: Array<string> = ["India", "Indian", "India's", "New Delhi", "Mumbai", "Narendra Modi", "Kashmir"];
   private sriLankaArray: Array<string> = ["Sri Lanka", "Sri Lankan", "Sri Lanka's", "Sri Lankans", "Ceylon", "Sri Jayawardenepura Kotte", "Sri Jayawardenepura Kotte", "Anuradhapura", "Sigiriya"];
   private bangladeshArray: Array<string> = ["Bangladesh", "Bangladeshi", "Bangladeshi's", "Bangladeshis", "Dhaka", "Abdul Hamid", "Sundarbans", "Royal Bengal Tiger", "Bengal Tiger", "Sundarbans", "Sylhet"];
+
 
   private georgiaArray: Array<string> = ["Georgia", "Republic of Georgia", "Tbilisi", "Giorgi Margvelashvili", "Batumi", "Svaneti", "Borjomi", "Narikala"];
   private armeniaArray: Array<string> = ["Armenia", "Armenian", "Armenia's", "Armenians", "Yerevan", "Mount Ararat", "Mt. Ararat", "Etchmiadzin Cathedral", "Geghard", "Lake Sevan", "Khor Virap", "Tatev monastery", "Tsaghkadzor"];
@@ -518,6 +516,10 @@ export class ResultsComponent implements OnInit {
 
     if (event.includes("Bangladesh")) {
       allArrayValues.push(this.bangladeshArray);
+    }
+
+    if (event.includes("Bhutan")) {
+      allArrayValues.push(this.bhutanArray);
     }
 
 
@@ -1167,12 +1169,12 @@ export class ResultsComponent implements OnInit {
 
 
 
-//NEWS API
+    //NEWS API
     //Combines NEWS API arrays for easier iteration/mapping
-    // var combinedArray = this.bbcJSON.articles.concat(this.alJazeeraJSON.articles, this.apJSON.articles, this.googleJSON.articles, this.economistJSON.articles, this.nytJSON.articles, this.wapoJSON.articles, this.cnnJSON.articles, this.newsweekJSON.articles, this.reutersJSON.articles, this.guardianUkJSON.articles, this.guardianAuJSON.articles, this.huffPostJSON.articles, this.wsjJSON.articles);
-    // console.log('Combined news article array', combinedArray);
+    var combinedArray = this.bbcJSON.articles.concat(this.alJazeeraJSON.articles, this.apJSON.articles, this.googleJSON.articles, this.economistJSON.articles, this.nytJSON.articles, this.wapoJSON.articles, this.cnnJSON.articles, this.newsweekJSON.articles, this.reutersJSON.articles, this.guardianUkJSON.articles, this.guardianAuJSON.articles, this.huffPostJSON.articles, this.wsjJSON.articles);
 
 
+    //EVENT REGISTRY - COMBINED ARRAYS
     var combinedEventRegistry = this.eventRegistryBBC.concat(this.eventRegistryGuardian, this.eventRegistryNewswire, this.eventRegistryCNN, this.eventRegistryWAPO, this.eventRegistryReuters, this.eventRegistryNYT, this.eventRegistryEconomist, this.eventRegistryAP, this.eventRegistryWSJ);
     // console.log("Combined Event Registry Articles Array", combinedEventRegistry);
 
@@ -1187,8 +1189,6 @@ export class ResultsComponent implements OnInit {
     });
 
 
-    // console.log("Mapped Event Registry Result", eventRegistryResult);
-
 
     //Event Registry Api
     //RETURNS ARTICLES MENTIONING AT LEAST 2 COUNTRIES, USING THEIR SEMANTICALLY EQUIVALENT KEYWORDS
@@ -1197,9 +1197,6 @@ export class ResultsComponent implements OnInit {
     var eventRegistryFiltered = eventRegistryTitles.filter(function(elem, index, self) {
       return index == self.indexOf(elem);
     })
-
-    // console.log("duplicate array", eventRegistryTitles);
-    // console.log("removed duplicates array", eventRegistryFiltered);
 
 
     const eventRegistryMatches = eventRegistryFiltered.filter(
@@ -1210,77 +1207,39 @@ export class ResultsComponent implements OnInit {
       )
     );
 
-    // console.log("Articles mentioning at least two countries from EventRegistry JSON", eventRegistryMatches);
 
 //NEWS API
-    //Iterating over the ARTICLE TITLES to see if they have country name from selected countries
-    // var newArray = _.map(combinedArray, 'description');
+    // Iterating over the ARTICLE TITLES to see if they have country name from selected countries
+    var newArray = _.map(combinedArray, 'description');
+    console.log("Combined News API descriptions", newArray);
+    let result =  event.map(function(word){
+    	return newArray.filter(function(article){
+        // console.log(article);
+        if (!article) {
+          return false;
+        } else {
+      	return article.toString().indexOf(word) > -1;
+      }
+      });
+    });
+
+
+
+
+
+  //Map NewsApi titles to the new array.
+    var newArray = _.map(combinedArray, 'title');
     // console.log("Combined News API descriptions", newArray);
-    // let result =  event.map(function(word){
-    // 	return newArray.filter(function(article){
-    //     // console.log(article);
-    //     if (!article) {
-    //       return false;
-    //     } else {
-    //   	return article.toString().indexOf(word) > -1;
-    //   }
-    //   });
-    // });
-
-
-//BING BING BING BING BING
-    // let combinedBing = this.bingWorldJSON.value.concat(this.bingPoliticsJSON.value);
-
-
-
-    //SEARCHING BING NEWS DESCRIPTIONS FOR SELECTED COUNTRY KEYWORD, RETURN RESULT
-    // let bingArray = _.pick(_.find('description', 'title', 'url'));
-    // let bingArray = _.map(combinedBing, 'description');
-    // let bingResult = event.map(function(word) {
-    //   return bingArray.filter(function(article) {
-    //     // console.log(article);
-    //     return article.toString().indexOf(word) > -1;
-    //   });
-    // });
-
-
-    //Bing Api
-    // //RETURNS ARTICLES MENTIONING AT LEAST 2 COUNTRIES, USING THEIR SEMANTICALLY EQUIVALENT KEYWORDS
-    // const bingMatches = bingArray.filter(
-    //   article => allArrayValues.every(
-    //     words => words.find(
-    //       word => article.toString().includes(word)
-    //     )
-    //   )
-    // );
+    const newsApiFilteredArray = newArray.filter(
+      article => allArrayValues.every(
+        words => words.find(
+          word => article.toString().includes(word)
+        )
+      )
+    );
 
 
 //NEWS API
-    // var newArray = _.map(combinedArray, 'title');
-    // // console.log("Combined News API descriptions", newArray);
-    // const newsApiMatches = newArray.filter(
-    //   article => allArrayValues.every(
-    //     words => words.find(
-    //       word => article.toString().includes(word)
-    //     )
-    //   )
-    // );
-
-    // Combine Articles of News API and Bing
-    // var allNews = newArray.concat(bingArray);
-    // var allNews = newArray;
-    // console.log('Combined NEWS API and BING titles/descriptions', allNews);
-
-
-    // console.log('articles with mentioning at least 2 countries from News API:');
-    // console.log(newsApiMatches);
-
-    // const combinedMatches = bingMatches.concat(newsApiMatches);
-
-//NEWS API
-    // const combinedMatches = newsApiMatches;
-    // console.log("Combined Matches from Bing and News Api: ", combinedMatches);
-
 
     for (let article of combinedEventRegistry) {
       for (let match of eventRegistryMatches) {
@@ -1293,47 +1252,34 @@ export class ResultsComponent implements OnInit {
         }
       }
     }
-    // console.log("Seeing if ER articles are pushing", this.eventRegistryMatchesArray);
+
+
+
 //NEWS API
-    // for (let article of combinedArray) {
-    //   for (let match of combinedMatches) {
-    //     if (article.title == match) {
-    //       var articleObject = { title: article.title, description: article.description, url: article.url, image: article.urlToImage, date: article.publishedAt };
-    //       //Push article objects to global array
-    //       this.newsApiMatches.push(articleObject);
-    //       console.log("Article url: ", article.url, 'Article title: ', article.title);
-    //     }
-    //   }
-    // }
-    // console.log("Seeing if articles are pushing", this.newsApiMatches);
+    for (let article of combinedArray) {
+      for (let match of newsApiFilteredArray) {
+        if (article.title == match) {
+          var articleObject = { title: article.title, description: article.description, url: article.url, image: article.urlToImage, date: article.publishedAt };
+          //Push article objects to global array
+          this.newsApiMatches.push(articleObject);
+        }
+      }
+    }
+    console.log("Seeing if articles are pushing", this.newsApiMatches);
 
-
-
-    // for (let article of combinedBing) {
-    //   for (let match of combinedMatches) {
-    //     if (article.description == match) {
-    //       var bingArticleObject = { title: article.name, description: article.description, url: article.url, image: article.image.thumbnail.contentUrl, source: article.provider[0].name, date: article.datePublished };
-    //       //Push article objects to global array
-    //       this.bingApiMatches.push(bingArticleObject);
-    //       // console.log("Article url: ", article.url, "Article description: ", article.description);
-    //     }
-    //   }
-    //
-    // }
-    // console.log("Seeing if Bing matches are pushing", this.bingApiMatches);
 
 
 
     //COMBINE ALL MATCHED ARTICLES, FROM ALL APIS
-    this.allMatches = this.eventRegistryMatchesArray
-    // .concat(this.newsApiMatches);
+    this.allMatches = this.eventRegistryMatchesArray.concat(this.newsApiMatches);
+    console.log("All MATCHES", this.allMatches);
 
 
     this.filteredMatches = __.uniqBy(this.allMatches, 'description');
     // console.log("Lodash array with zero duplicates", this.filteredMatches);
 
     this.doubleFilteredMatches = __.uniqBy(this.filteredMatches, 'title');
-    // console.log("Lodash double filtered matches", this.doubleFilteredMatches);
+    console.log("Lodash double filtered matches", this.doubleFilteredMatches);
 
 
 
@@ -1576,25 +1522,6 @@ export class ResultsComponent implements OnInit {
         });
       });
 
-
-
-    // Get World News from Bing News Search
-    this.newsAPI.getBingWorldNews()
-      .subscribe((res: Response) => {
-        this.ngZone.run(() => {
-          this.bingWorldJSON = res;
-          console.log('Bing World News', this.bingWorldJSON.value);
-        });
-      });
-
-    //Get Politics News from Bing News Search
-    this.newsAPI.getBingPoliticsNews()
-      .subscribe((res: Response) => {
-        this.ngZone.run(() => {
-          this.bingPoliticsJSON = res;
-          console.log('Bing Politics News', this.bingPoliticsJSON.value);
-        });
-      });
 
 
   }

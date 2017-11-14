@@ -150,7 +150,7 @@ getEventRegistryAP(){
 getEventRegistryWSJ(){
   return this.http.get("http://eventregistry.org/json/article?sourceUri=www.wsj.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesCount=200&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
   .map((res) => {
-    this.eventRegistryWSJ= res.json()
+    this.eventRegistryWSJ = res.json()
     return res.json().articles.results;
   })
 }
@@ -267,27 +267,6 @@ getWSJ(){
       this.wsjNews = res.json()
       return res.json();
     })
-}
-
-// BING API
-getBingWorldNews() {
-  let headers = new Headers({ 'Ocp-Apim-Subscription-Key': this.bingToken });
-  let options = new RequestOptions({ headers: headers });
-    return this.http.get(`https://api.cognitive.microsoft.com/bing/v5.0/news/?Category=World&count=100`, options)
-      .map((res) => {
-        this.bingWorld = res.json()
-        return res.json();
-      })
-}
-
-getBingPoliticsNews() {
-  let headers = new Headers({ 'Ocp-Apim-Subscription-Key': this.bingToken });
-  let options = new RequestOptions({ headers: headers });
-    return this.http.get(`https://api.cognitive.microsoft.com/bing/v5.0/news/?Category=Politics&count=100`, options)
-      .map((res) => {
-        this.bingPolitics = res.json()
-        return res.json();
-      })
 }
 
 
