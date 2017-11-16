@@ -292,6 +292,7 @@ export class ResultsComponent implements OnInit {
     this.newsAPI.hideDiv();
     this.newsAPI.showDiv();
 
+
     //Clears previous matches to update the DOM for latest selection
     this.allMatches.length = 0;
     this.eventRegistryMatchesArray.length = 0;
@@ -486,7 +487,7 @@ export class ResultsComponent implements OnInit {
       console.log("Thailand");
     }
 
-    if (event.includes("Laos")) {
+    if (event.includes("Lao People's Democratic Republic")) {
       allArrayValues.push(this.laosArray);
       console.log("Laos");
     }
@@ -1292,9 +1293,17 @@ export class ResultsComponent implements OnInit {
 
 
 
+    let articlesContainer = document.getElementById("articles-container");
+    if (this.doubleFilteredMatches.length >= 5) {
+      articlesContainer.style.height = "500px";
+    } else {
+      articlesContainer.style.height = "300px"
+    }
+
+
+
+
   }
-
-
 
   constructor(
     private ngZone: NgZone,
