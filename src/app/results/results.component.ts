@@ -1282,14 +1282,14 @@ export class ResultsComponent implements OnInit {
 
 //COMBINE ALL MATCHED ARTICLES, FROM ALL APIS
     this.allMatches = this.eventRegistryMatchesArray.concat(this.newsApiMatches);
-    console.log("All MATCHES", this.allMatches);
+
 
 //Double filter the matches by description and title to remove any duplicates
     this.filteredMatches = __.uniqBy(this.allMatches, 'description');
-    console.log("Lodash array with zero duplicates", this.filteredMatches);
+
 
     this.doubleFilteredMatches = __.uniqBy(this.filteredMatches, 'title');
-    console.log("Lodash double filtered matches", this.doubleFilteredMatches);
+
 
 
 
@@ -1324,7 +1324,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.eventRegistryBBC = res;
-          console.log("BBC - The Event Registry", this.eventRegistryBBC);
+          // console.log("BBC - The Event Registry", this.eventRegistryBBC);
         });
       });
 
@@ -1352,7 +1352,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.eventRegistryCNN = res;
-          console.log("CNN International - Event Registry", this.eventRegistryCNN);
+          // console.log("CNN International - Event Registry", this.eventRegistryCNN);
         });
       });
 
@@ -1370,7 +1370,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.eventRegistryReuters = res;
-          console.log("Reuters - Event Registry", this.eventRegistryReuters);
+          // console.log("Reuters - Event Registry", this.eventRegistryReuters);
         });
       });
     //
@@ -1397,7 +1397,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.eventRegistryAP = res;
-          console.log("Associated Press - Event Registry", this.eventRegistryAP);
+          // console.log("Associated Press - Event Registry", this.eventRegistryAP);
         });
       });
 
@@ -1418,7 +1418,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.bbcJSON = res;
-          console.log('BBC', this.bbcJSON.articles);  //show top 10 articles from BBC Json
+          // console.log('BBC', this.bbcJSON.articles);  //show top 10 articles from BBC Json
         });
       });
 
@@ -1427,7 +1427,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.apJSON = res;
-          console.log('Associated Press', this.apJSON.articles);  //show top 10 articles from Associated Press
+          // console.log('Associated Press', this.apJSON.articles);  //show top 10 articles from Associated Press
         });
       });
 
@@ -1436,7 +1436,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.googleJSON = res;
-          console.log('Google News', this.googleJSON.articles);  //show top 10 articles from Google News
+          // console.log('Google News', this.googleJSON.articles);  //show top 10 articles from Google News
         });
       });
 
@@ -1445,7 +1445,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.economistJSON = res;
-          console.log('Economist', this.economistJSON.articles);  //show top 10 articles from Economist
+          // console.log('Economist', this.economistJSON.articles);  //show top 10 articles from Economist
         });
       });
 
@@ -1454,7 +1454,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.nytJSON = res;
-          console.log('The New York Times', this.nytJSON.articles);  //show top 10 articles from NYT
+          // console.log('The New York Times', this.nytJSON.articles);  //show top 10 articles from NYT
         });
       });
 
@@ -1463,7 +1463,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.wapoJSON = res;
-          console.log('Washington Post', this.wapoJSON.articles);  //show top 10 articles from WAPO
+          // console.log('Washington Post', this.wapoJSON.articles);  //show top 10 articles from WAPO
         });
       });
 
@@ -1472,7 +1472,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.cnnJSON = res;
-          console.log('CNN', this.cnnJSON.articles);  //show top 10 articles from CNN
+          // console.log('CNN', this.cnnJSON.articles);  //show top 10 articles from CNN
         });
       });
 
@@ -1481,7 +1481,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.newsweekJSON = res;
-          console.log('Newsweek', this.newsweekJSON.articles);  //show top 10 articles from Newsweek
+          // console.log('Newsweek', this.newsweekJSON.articles);  //show top 10 articles from Newsweek
         });
       });
 
@@ -1491,7 +1491,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.reutersJSON = res;
-          console.log('Reuters', this.reutersJSON.articles);  //show top 10 articles from Reuters
+          // console.log('Reuters', this.reutersJSON.articles);  //show top 10 articles from Reuters
         });
       });
 
@@ -1500,7 +1500,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.guardianUkJSON = res;
-          console.log('Guardian UK', this.guardianUkJSON.articles);  //show top 10 articles from GuardianUK
+          // console.log('Guardian UK', this.guardianUkJSON.articles);  //show top 10 articles from GuardianUK
         });
       });
 
@@ -1509,7 +1509,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.guardianAuJSON = res;
-          console.log('Guardian AU', this.guardianAuJSON.articles);  //show top 10 articles from GuardianAU
+          // console.log('Guardian AU', this.guardianAuJSON.articles);  //show top 10 articles from GuardianAU
         });
       });
 
@@ -1518,7 +1518,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.huffPostJSON = res;
-          console.log('Huffington Post', this.huffPostJSON.articles);  //show top 10 articles from HuffPost
+          // console.log('Huffington Post', this.huffPostJSON.articles);  //show top 10 articles from HuffPost
         });
       });
 
@@ -1527,7 +1527,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.wsjJSON = res;
-          console.log('Wall Street Journal', this.wsjJSON.articles);  //show top 10 articles from HuffPost
+          // console.log('Wall Street Journal', this.wsjJSON.articles);  //show top 10 articles from HuffPost
         });
       });
 
@@ -1536,7 +1536,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.alJazeeraJSON = res;
-          console.log('Al Jazeera', this.alJazeeraJSON.articles);  //show top 10 articles from Al Jazeera
+          // console.log('Al Jazeera', this.alJazeeraJSON.articles);  //show top 10 articles from Al Jazeera
         });
       });
 
