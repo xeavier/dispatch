@@ -28,8 +28,9 @@ app.use('/api', api);
 // Catch all other routes and return the index file.  This catch-all route must come after all other
 // API routes have been defined.
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
+
 
 /**
  * Get port from environment and store in Express.
