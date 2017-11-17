@@ -40,7 +40,7 @@ export class MapComponent implements OnInit {
       type: "map",
       theme: "dark",
       responsive: {
-        "enabled": true
+        enabled: true
       },
       projection: "eckert5",
       panEventsEnabled: true,
