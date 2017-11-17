@@ -1320,13 +1320,13 @@ export class ResultsComponent implements OnInit {
     //NEWS APIS
 
     // Return current news from Event Registry BBC
-    this.newsAPI.getEventRegistryBBC()
-      .subscribe((res: Response) => {
-        this.ngZone.run(() => {
-          this.eventRegistryBBC = res;
-          // console.log("BBC - The Event Registry", this.eventRegistryBBC);
-        });
-      });
+    // this.newsAPI.getEventRegistryBBC()
+    //   .subscribe((res: Response) => {
+    //     this.ngZone.run(() => {
+    //       this.eventRegistryBBC = res;
+    //       // console.log("BBC - The Event Registry", this.eventRegistryBBC);
+    //     });
+    //   });
 
       // Return current news from Event Registry PR Newswire
     // this.newsAPI.getEventRegistryNewswire()
@@ -1348,13 +1348,13 @@ export class ResultsComponent implements OnInit {
     // });
 
     // Return current news from Event Registry CNN International
-    this.newsAPI.getEventRegistryCNN()
-      .subscribe((res: Response) => {
-        this.ngZone.run(() => {
-          this.eventRegistryCNN = res;
-          // console.log("CNN International - Event Registry", this.eventRegistryCNN);
-        });
-      });
+    // this.newsAPI.getEventRegistryCNN()
+    //   .subscribe((res: Response) => {
+    //     this.ngZone.run(() => {
+    //       this.eventRegistryCNN = res;
+    //       // console.log("CNN International - Event Registry", this.eventRegistryCNN);
+    //     });
+    //   });
 
     //Return current news from Event Registry Washington Post
     // this.newsAPI.getEventRegistryWAPO()
@@ -1366,13 +1366,13 @@ export class ResultsComponent implements OnInit {
     // });
 
     // Return current news from Event Registry Reuters
-    this.newsAPI.getEventRegistryReuters()
-      .subscribe((res: Response) => {
-        this.ngZone.run(() => {
-          this.eventRegistryReuters = res;
-          // console.log("Reuters - Event Registry", this.eventRegistryReuters);
-        });
-      });
+    // this.newsAPI.getEventRegistryReuters()
+    //   .subscribe((res: Response) => {
+    //     this.ngZone.run(() => {
+    //       this.eventRegistryReuters = res;
+    //       // console.log("Reuters - Event Registry", this.eventRegistryReuters);
+    //     });
+    //   });
     //
     // Return current news from Event Registry New York Times
     // this.newsAPI.getEventRegistryNYT()
@@ -1393,13 +1393,13 @@ export class ResultsComponent implements OnInit {
     // });
 
     // Return current news from Event Registry Associated Press
-    this.newsAPI.getEventRegistryAP()
-      .subscribe((res: Response) => {
-        this.ngZone.run(() => {
-          this.eventRegistryAP = res;
-          // console.log("Associated Press - Event Registry", this.eventRegistryAP);
-        });
-      });
+    // this.newsAPI.getEventRegistryAP()
+    //   .subscribe((res: Response) => {
+    //     this.ngZone.run(() => {
+    //       this.eventRegistryAP = res;
+    //       // console.log("Associated Press - Event Registry", this.eventRegistryAP);
+    //     });
+    //   });
 
     //Return current news from Event Registry Wall Street Journal
     // this.newsAPI.getEventRegistryWSJ()

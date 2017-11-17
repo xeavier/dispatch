@@ -39,9 +39,6 @@ export class MapComponent implements OnInit {
 
       type: "map",
       theme: "dark",
-      responsive: {
-        enabled: true
-      },
       projection: "eckert5",
       panEventsEnabled: true,
       backgroundColor: "#2b2e31",
@@ -85,9 +82,12 @@ export class MapComponent implements OnInit {
           this.selectedCountries = result;
 
         }
-      }]
-    });
+      }],
+      responsive: {
+        enabled: true
+      }
 
+    });
 
 
   }
