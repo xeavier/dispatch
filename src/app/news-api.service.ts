@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
-// import {Observable} from 'rxjs/Rx';
- import 'rxjs/add/operator/map';
+
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class NewsApiService {
 
-  public bingToken: string;
   public bbc: any;
-  public bingWorld: any;
-  public bingPolitics: any;
   public apNews: any;
   public googleNews: any;
   public economistNews: any;
@@ -38,17 +35,7 @@ export class NewsApiService {
   constructor(
     private http: Http,
     private router: Router
-  ) {
-
-    // Set Token Variable
-      this.bingToken = "3393050cb6564841a62d58f60b8f4ccb";
-      if (this.bingToken != null) {
-        console.log("API token works");
-      } else {
-        alert("API token not working");
-      }
-
-   }
+  ) {}
 
 
 hideDiv() {
@@ -64,7 +51,7 @@ showDiv() {
 //EVENT REGISTRY API
 //BBC
 getEventRegistryBBC(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=bbc.co.uk&sourceUri=bbc.com&categoryUri=dmoz%2FSociety%2FPolitics&action=getArticles&articlesSortBy=date&resultType=articles&articlesCount=200&articlesIncludeArticleDuplicateList=true&articlesIncludeArticleCategories=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("https://eventregistry.org/json/article?sourceUri=bbc.co.uk&sourceUri=bbc.com&categoryUri=dmoz%2FSociety%2FPolitics&action=getArticles&articlesSortBy=date&resultType=articles&articlesCount=200&articlesIncludeArticleDuplicateList=true&articlesIncludeArticleCategories=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
     .map((res) => {
       this.eventRegistryBBC = res.json()
       return res.json().articles.results;
@@ -73,7 +60,7 @@ getEventRegistryBBC(){
 
 //PR NEWSWIRE
 getEventRegistryNewswire(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=prnewswire.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesCount=20&articlesIncludeArticleConcepts=true&articlesIncludeArticleCategories=true&articlesIncludeArticleImage=true&articlesIncludeConceptSynonyms=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("https://eventregistry.org/json/article?sourceUri=prnewswire.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesCount=20&articlesIncludeArticleConcepts=true&articlesIncludeArticleCategories=true&articlesIncludeArticleImage=true&articlesIncludeConceptSynonyms=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
     .map((res) => {
       this.eventRegistryNewswire = res.json()
       return res.json().articles.results;
@@ -82,7 +69,7 @@ getEventRegistryNewswire(){
 
 //Guardian
 getEventRegistryGuardian(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=www.theguardian.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesCount=200&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesIncludeSourceLocation=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("https://eventregistry.org/json/article?sourceUri=www.theguardian.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesCount=200&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesIncludeSourceLocation=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
   .map((res) => {
     this.eventRegistryGuardian = res.json()
     return res.json().articles.results;
@@ -91,7 +78,7 @@ getEventRegistryGuardian(){
 
 //CNN
 getEventRegistryCNN(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=edition.cnn.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&&articlesCount=200&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesIncludeSourceLocation=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("https://eventregistry.org/json/article?sourceUri=edition.cnn.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&&articlesCount=200&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesIncludeSourceLocation=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
   .map((res) => {
     this.eventRegistryCNN = res.json()
     return res.json().articles.results;
@@ -101,7 +88,7 @@ getEventRegistryCNN(){
 
 //Washington Post
 getEventRegistryWAPO(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=www.washingtonpost.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=rel&resultType=articles&articlesIncludeArticleLocation=true&articlesCount=200&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeConceptDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesIncludeSourceLocation=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("https://eventregistry.org/json/article?sourceUri=www.washingtonpost.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=rel&resultType=articles&articlesIncludeArticleLocation=true&articlesCount=200&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeConceptDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesIncludeSourceLocation=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
   .map((res) => {
     this.eventRegistryWAPO = res.json()
     return res.json().articles.results;
@@ -110,7 +97,7 @@ getEventRegistryWAPO(){
 
 //Reuters
 getEventRegistryReuters(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=reuters.com&categoryUri=dmoz%2FSociety%2FPolitics&action=getArticles&articlesIncludeArticleImage=true&articlesSortBy=date&resultType=articles&articlesCount=200&articlesIncludeArticleDuplicateList=true&articlesIncludeArticleCategories=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("https://eventregistry.org/json/article?sourceUri=reuters.com&categoryUri=dmoz%2FSociety%2FPolitics&action=getArticles&articlesIncludeArticleImage=true&articlesSortBy=date&resultType=articles&articlesCount=200&articlesIncludeArticleDuplicateList=true&articlesIncludeArticleCategories=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
   .map((res) => {
     this.eventRegistryReuters = res.json()
     return res.json().articles.results;
@@ -122,7 +109,7 @@ getEventRegistryReuters(){
 
 //New York Times
 getEventRegistryNYT(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=www.nytimes.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesCount=200&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("https://eventregistry.org/json/article?sourceUri=www.nytimes.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesCount=200&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
   .map((res) => {
     this.eventRegistryNYT = res.json()
     return res.json().articles.results;
@@ -131,7 +118,7 @@ getEventRegistryNYT(){
 
 //Economist
 getEventRegistryEconomist(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=www.economist.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesCount=200&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("https://eventregistry.org/json/article?sourceUri=www.economist.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesCount=200&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
   .map((res) => {
     this.eventRegistryEconomist = res.json()
     return res.json().articles.results;
@@ -140,7 +127,7 @@ getEventRegistryEconomist(){
 
 //Associated Press
 getEventRegistryAP(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=hosted.ap.org&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesCount=200&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("https://eventregistry.org/json/article?sourceUri=hosted.ap.org&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesCount=200&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
   .map((res) => {
     this.eventRegistryAP = res.json()
     return res.json().articles.results;
@@ -148,7 +135,7 @@ getEventRegistryAP(){
 }
 
 getEventRegistryWSJ(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=www.wsj.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesCount=200&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("https://eventregistry.org/json/article?sourceUri=www.wsj.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesCount=200&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
   .map((res) => {
     this.eventRegistryWSJ = res.json()
     return res.json().articles.results;
