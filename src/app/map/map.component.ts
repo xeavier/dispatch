@@ -24,7 +24,7 @@ export class MapComponent implements OnInit {
   fireShareEvent(event) {
     if (this.selectedCountries.length > 0) {
       this.shareCountries.emit(this.selectedCountries);
-    } 
+    }
   }
 
 
@@ -39,6 +39,9 @@ export class MapComponent implements OnInit {
 
       type: "map",
       theme: "dark",
+      responsive: {
+        "enabled": true
+      },
       projection: "eckert5",
       panEventsEnabled: true,
       backgroundColor: "#2b2e31",
