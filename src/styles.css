@@ -153,10 +153,10 @@ body {
     .jumbotron
     {
       height: 500px;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      background-size: cover;
-      -o-background-size: cover;
+      -webkit-background-size: contain;
+      -moz-background-size: contain;
+      background-size: contain;
+      -o-background-size: contain;
     }
 
     .map-container {
