@@ -153,10 +153,10 @@ body {
     .jumbotron
     {
       height: 500px;
-      background-image: url("https://i.imgur.com/723QP.jpg");
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      -o-background-size: cover;
     }
 
     .map-container {
