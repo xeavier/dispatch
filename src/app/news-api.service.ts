@@ -43,6 +43,7 @@ hideDiv() {
            placeholderText.style.display = "none";
    }
 
+
 showDiv() {
         var articlesContainer = document.getElementById("articles-container");
             articlesContainer.style.display = "block";
