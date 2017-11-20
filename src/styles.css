@@ -171,7 +171,8 @@ body {
     }
 
     .article-image {
-      width: 100%;
+      width: 120px;
+      height: 100px;
     }
 
     .article-info {
