@@ -288,6 +288,7 @@ export class ResultsComponent implements OnInit {
 
   share(event) {
 
+console.log("event works");
     //Hides placeholder text when event is triggered
     this.newsAPI.hideDiv();
     this.newsAPI.showDiv();
@@ -301,6 +302,7 @@ export class ResultsComponent implements OnInit {
 
     //Stores the country keywords for later mapping
     let allArrayValues = [];
+
 
 
 
@@ -1217,6 +1219,7 @@ export class ResultsComponent implements OnInit {
 
 
 
+
 //------------------------------NEWS API-----------------------------------
 
 // Check News Api DESCRIPTIONS for matching country words selected by user.
@@ -1253,12 +1256,15 @@ export class ResultsComponent implements OnInit {
 // ----------Match Selected Countries to Articles That Mention Them---------
 
 //EVENT REGISTRY
+
     for (let article of combinedEventRegistry) {
       for (let match of eventRegistryMatches) {
         if (article.title == match) {
-          var eventRegistryObject = { title: article.title, description: article.body, url: article.url, image: article.image, source: article.source.title, thumbnail: article.source.details.thumbImage, date: article.date };
+          console.log("match!!!");
+          var eventRegistryObject = { title: article.title, description: article.body, url: article.url, image: article.image, source: article.source.title, thumbnail: article.source.uri, date: article.date };
           //Push article objects to global array
           this.eventRegistryMatchesArray.push(eventRegistryObject);
+
         }
       }
     }
@@ -1301,8 +1307,6 @@ export class ResultsComponent implements OnInit {
     }
 
 
-
-
   }
 
   constructor(
@@ -1324,7 +1328,7 @@ export class ResultsComponent implements OnInit {
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
           this.eventRegistryBBC = res;
-          // console.log("BBC - The Event Registry", this.eventRegistryBBC);
+          console.log("BBC - The Event Registry", this.eventRegistryBBC);
         });
       });
 
@@ -1343,7 +1347,7 @@ export class ResultsComponent implements OnInit {
     // .subscribe((res: Response) => {
     //   this.ngZone.run(() => {
     //     this.eventRegistryGuardian = res;
-    //     console.log("The Guardian - Event Registry", this.eventRegistryGuardian);
+        // console.log("The Guardian - Event Registry", this.eventRegistryGuardian);
     //   });
     // });
 
