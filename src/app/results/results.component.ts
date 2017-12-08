@@ -288,7 +288,6 @@ export class ResultsComponent implements OnInit {
 
   share(event) {
 
-console.log("event works");
     //Hides placeholder text when event is triggered
     this.newsAPI.hideDiv();
     this.newsAPI.showDiv();

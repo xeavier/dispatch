@@ -28,8 +28,7 @@ export class MapComponent implements OnInit {
   }
 
 
-  constructor() {
-  }
+  constructor() {}
 
 
   ngOnInit() {
@@ -88,8 +87,6 @@ export class MapComponent implements OnInit {
       }
 
     });
-
-
   }
 
   /**

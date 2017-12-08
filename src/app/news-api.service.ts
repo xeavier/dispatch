@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
+import { MapComponent } from "./map/map.component";
 
 import 'rxjs/add/operator/map';
 
@@ -39,9 +40,12 @@ export class NewsApiService {
 
 
 hideDiv() {
+      var articlesContainer = document.getElementById("articles-container");
        var placeholderText = document.getElementById("placeholder-text");
            placeholderText.style.display = "none";
-   }
+           articlesContainer.style.height = "400px";
+
+  }
 
 
 showDiv() {
