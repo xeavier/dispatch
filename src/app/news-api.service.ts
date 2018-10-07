@@ -53,6 +53,7 @@ showDiv() {
             articlesContainer.style.display = "block";
   }
 
+
 //EVENT REGISTRY API
 //BBC
 getEventRegistryBBC(){
